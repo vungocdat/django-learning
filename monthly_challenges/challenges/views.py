@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # When someone visit the web with
 
@@ -30,3 +30,11 @@ def monthly_challenges(request, month):     # 'month' is a key word identifier f
         return HttpResponse(text)
     except:
         return HttpResponseNotFound("Page not found.")
+
+
+def monthly_challenges_num(request, month):
+    months = list(month_task.keys())        # dictionary are ordered since certain version
+    if month > len(months) or month < 1:
+        return HttpResponseNotFound('PAGE NOT FOUND')
+    redirect_to_month = months[month-1]
+    return HttpResponseRedirect('/challenges/' + redirect_to_month)
