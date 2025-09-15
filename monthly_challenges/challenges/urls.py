@@ -4,6 +4,5 @@ from . import views
 # after reachving /challenges
 
 urlpatterns = [
-    path("january", views.jan),      # reching for /challenges/january
-    path('february', views.feb)
+    path('<month>', views.monthly_challenges)       # palceholder with label 'month'
 ]
