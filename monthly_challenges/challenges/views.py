@@ -28,15 +28,16 @@ month_task = {
 def monthly_challenges(request, month):     # 'month' is a key word identifier for urls.py
     try:
         text = month_task[month]
-        return HttpResponse(text)
+        html_text = f'<h1>{text}</h1>'
+        return HttpResponse(html_text)
     except:
-        return HttpResponseNotFound("Page not found.")
+        return HttpResponseNotFound("<h1>Page not found.</h1>")
 
 
 def monthly_challenges_num(request, month):
     months = list(month_task.keys())        # dictionary are ordered since certain version
     if month > len(months) or month < 1:
-        return HttpResponseNotFound('PAGE NOT FOUND')
+        return HttpResponseNotFound('<h1>PAGE NOT FOUND</h1>')
     redirect_to_month = months[month-1]
     construct_path = reverse('month-url', args=[redirect_to_month])     # month-url - challenges, args = january / feb etc
     return HttpResponseRedirect(construct_path)
