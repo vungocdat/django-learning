@@ -25,6 +25,16 @@ month_task = {
 # Create your views here.
 
 
+def index(request):
+    list_items = ''
+    months = list(month_task.keys())
+    for i in months:
+        month_path = reverse('month-url', args=[i])
+        list_items += f'<li><a href="{month_path}">{i.capitalize()}</a></li>'
+        response_data = f'<ul>{list_items}</ul>'
+    return HttpResponse(response_data)
+
+
 def monthly_challenges(request, month):     # 'month' is a key word identifier for urls.py
     try:
         text = month_task[month]
