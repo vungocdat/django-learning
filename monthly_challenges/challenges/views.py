@@ -20,7 +20,7 @@ month_task = {
     'september': 'This is  page - learn Django for 1 hour every day! 9',
     'october': 'This is  page - learn Django for 1 hour every day! 10',
     'november': 'This is  page - learn Django for 1 hour every day! 11',
-    'december': 'This is  page - learn Django for 1 hour every day! 12',
+    'december': None,
 }
 
 # Create your views here.
@@ -29,11 +29,10 @@ month_task = {
 def index(request):
     list_items = ''
     months = list(month_task.keys())
-    for i in months:
-        month_path = reverse('month-url', args=[i])
-        list_items += f'<li><a href="{month_path}">{i.capitalize()}</a></li>'
-        response_data = f'<ul>{list_items}</ul>'
-    return HttpResponse(response_data)
+    return render(request, 'challenges/index.html', {
+        'months': months,
+
+        })
 
 
 def monthly_challenges(request, month):     # 'month' is a key word identifier for urls.py
