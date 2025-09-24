@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # When someone visit the web with
 
@@ -38,8 +39,7 @@ def index(request):
 def monthly_challenges(request, month):     # 'month' is a key word identifier for urls.py
     try:
         text = month_task[month]
-        html_text = f'<h1>{text}</h1>'
-        return HttpResponse(html_text)
+        return render(request, 'challenges/challenge.html')
     except:
         return HttpResponseNotFound("<h1>Page not found.</h1>")
 
