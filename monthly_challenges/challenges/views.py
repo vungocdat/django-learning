@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-# from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 
 # When someone visit the web with
 
@@ -43,7 +43,7 @@ def monthly_challenges(request, month):     # 'month' is a key word identifier f
                 'month_name': month.capitalize()
             })
     except:
-        return HttpResponseNotFound("<h1>Page not found.</h1>")
+        raise Http404()
 
 
 def monthly_challenges_num(request, month):
