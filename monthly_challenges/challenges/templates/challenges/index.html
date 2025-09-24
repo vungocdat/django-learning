@@ -5,9 +5,10 @@ All challenges
 {% endblock %}
 
 {% block content %}
-<ul>
-    {% for i in months %}
-    <li><a href="{% url 'month-url' i %}">{{ i|title }}</a></li>
-    {% endfor %}
-</ul>
+    {% include "challenges/shared/header.html" %}
+    <ul>
+        {% for i in months %}
+        <li><a href="{% url 'month-url' i %}">{{ i|title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

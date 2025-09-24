@@ -5,6 +5,8 @@ Monthly challenge
 {% endblock %}
 
 {% block content %}
+    {% include "challenges/shared/header.html" %}
+
     <h1>{{ month_name }}'s challenge'</h1>
     {% if text is not None %}
         <h2>{{ text }}</h2>
