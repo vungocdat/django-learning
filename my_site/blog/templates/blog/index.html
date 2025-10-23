@@ -1,9 +1,51 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     My blog
 {% endblock %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/index.css" %}"/>
+{% endblock %}
+
 {% block content %}
-    <h1>Welcome to my blog</h1>
+    <header id="main-navigation">
+        <h1><a href="">Dat's blog</a></h1>
+        <nav>
+            <a href="">All posts</a>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <header>
+            <img src="" alt="Dat - author of this blog"/>
+            <h2>Vu's blog</h2>
+        </header>
+        <p>Hi, I am Dat and I am currently learning Python and Django</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2>My latest thoughts</h2>
+
+        <ul>
+            <li>
+                <article class="post">
+                    <a href="">
+                        <img src="" alt="Django learning"/>
+                        <div class="post__content">
+                            <h3>Django</h3>
+                            <p>The Django training is quite exciting for me. Learning something new is always a nice feeling!</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I do</h2>
+        <p>I am learning python programming because I would like to find a job as pythonista one day.</p>
+        <p>My goal is to gain knowledge and experience as a python programmer</p>
+    </section>
 {% endblock %}
