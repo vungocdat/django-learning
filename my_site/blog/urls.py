@@ -7,5 +7,5 @@ urlpatterns = [
     # /blog/posts
     path("posts", views.posts, name="posts-page"),
     # /blog/posts/dynamic_part (slug is universal placeholder)
-    path("posts/<slug:slug>", views.post_detail, name="posts-detail-page"),
+    path("posts/<slug:slug>", views.post_detail, name="post-detail-page"),
 ]

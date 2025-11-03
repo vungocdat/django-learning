@@ -1,11 +1,11 @@
 {% load static %}
 <li>
     <article class="post">
-        <a href="">
-            <img src="" alt="Django learning"/>
+        <a href="{% url 'post-detail-page' post.slug %}">
+            <img src="" alt="{{ post.title }}"/>
             <div class="post__content">
-                <h3>Django</h3>
-                <p>The Django training is quite exciting for me. Learning something new is always a nice feeling!</p>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excert }}</p>
             </div>
         </a>
     </article>
