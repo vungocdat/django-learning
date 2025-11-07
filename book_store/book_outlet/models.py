@@ -10,6 +10,9 @@ class Address(models.Model):
     city = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=5)
 
+    class Meta:
+        verbose_name_plural = 'Address Entries'  # admin panel add 's' at the end by default. This will overwrite it
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
