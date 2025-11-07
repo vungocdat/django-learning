@@ -13,9 +13,8 @@ class Book(models.Model):
     bestseller = models.BooleanField(default=False)
     slug = models.SlugField(default='', blank=True, null=False, db_index=True)  # Harry Potter 1 -> harry-potter-1, will be created during the save()
 
-    def __str__(self):
-        return f'{self.title} ({self.rating})'
-
+#    def __str__(self):
+#        return f'{self.title} ({self.rating})'
 
     def get_absolute_url(self):
         return reverse('book-detail', args=[self.slug])
