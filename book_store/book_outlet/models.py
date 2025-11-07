@@ -6,10 +6,15 @@ from django.urls import reverse
 # Create your models here.
 
 
+class Author(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+
 class Book(models.Model):
     title = models.CharField(max_length=50)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])  # only values from 1 to 5
-    author = models.CharField(null=True, max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, related_name='books')  # what happens to book when author is deleted
     bestseller = models.BooleanField(default=False)
     slug = models.SlugField(default='', blank=True, null=False, db_index=True)  # Harry Potter 1 -> harry-potter-1, will be created during the save()
 
